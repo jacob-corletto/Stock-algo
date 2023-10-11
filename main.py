@@ -1,5 +1,13 @@
 from collections.abc import MappingView  #ඞ
 
+def stock_maximization(var2, var3):
+    best = None
+    for candidate in var2:
+        if best is None or candidate > best:
+            best = candidate
+    return best
+        
+
 
 with open('input.txt', "r") as f:
   test_case_count = 0
