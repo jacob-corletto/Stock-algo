@@ -1,14 +1,4 @@
 def knapsack_best_subset(sublists, capacity):
-  """Returns the best subset of sublists that maximizes the sum of the second values, subject to the given capacity.
-
-  Args:
-    sublists: A list of sublists, where each sublist is a list of two elements: the profit and weight of the sublist.
-    capacity: The maximum capacity of the knapsack.
-
-  Returns:
-    The best subset of sublists that maximizes the sum of the second values, subject to the given capacity.
-  """
-
   # Sort the sublists in decreasing order of their second values.
   
 
