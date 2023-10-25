@@ -27,16 +27,6 @@ def knapsack_best_subset(sublists, capacity):
   # Return the final solution.
   return final_solution
 
-
-# Solve the knapsack problem.
-sublists =  [[3,2],[4,3],[5,3],[6,7]]
-capacity = 10
-best_subset = knapsack_best_subset(sublists, capacity)
-
-# Print the maximum sum of the second values and the best subset.
-print(sum([sublist[1] for sublist in best_subset]))
-print(best_subset)
-
 with open('input.txt', "r") as f:
   test_case_count = 0
   for i in range(len('input.txt')):
