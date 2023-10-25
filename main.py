@@ -79,7 +79,7 @@ capacity = 12
 best_subset = knapsack_best_subset_exhaustive(sublists, capacity)
 
 # Print the maximum sum of the second values and the best subset.
-      print(sum([sublist[1] for sublist in best_subset]))
-      print(best_subset)
-      print(str(var1) + '\n')
+print(sum([sublist[1] for sublist in best_subset]))
+print(best_subset)
+# print(str(var1) + '\n')
       
