@@ -1,4 +1,43 @@
-def knapsack_best_subset(sublists, capacity):
+# def knapsack_best_subset(sublists, capacity):
+#   """Returns the best subset of sublists that maximizes the sum of the second values, subject to the given capacity.
+
+#   Args:
+#     sublists: A list of sublists, where each sublist is a list of two elements: the profit and weight of the sublist.
+#     capacity: The maximum capacity of the knapsack.
+
+#   Returns:
+#     The best subset of sublists that maximizes the sum of the second values, subject to the given capacity.
+#   """
+
+#   # Sort the sublists in decreasing order of their second values.
+  
+
+#   # Initialize the final solution.
+#   final_solution = []
+#   total_weight = 0
+
+#   # Add sublists to the final solution until the capacity is exceeded.
+#   for sublist in sublists:
+#     if total_weight + sublist[1] <= capacity:
+#       final_solution.append(sublist)
+#       total_weight += sublist[1]
+#     else:
+#       break
+
+#   # Return the final solution.
+#   return final_solution
+
+
+# # Solve the knapsack problem.
+# # sublists =  [[3,2],[4,3],[5,3],[6,7]]
+# # capacity = 10
+# # best_subset = knapsack_best_subset(sublists, capacity)
+
+# # # Print the maximum sum of the second values and the best subset.
+# # print(sum([sublist[1] for sublist in best_subset]))
+# # print(best_subset)
+
+def knapsack_best_subset_exhaustive(sublists, capacity):
   """Returns the best subset of sublists that maximizes the sum of the second values, subject to the given capacity.
 
   Args:
@@ -9,53 +48,60 @@ def knapsack_best_subset(sublists, capacity):
     The best subset of sublists that maximizes the sum of the second values, subject to the given capacity.
   """
 
-  # Sort the sublists in decreasing order of their second values.
-  sublists.sort(key=lambda sublist: sublist[1], reverse=True)
+  # Initialize the best subset and the maximum value.
+  best_subset = []
+  max_value = 0
 
-  # Initialize the final solution.
-  final_solution = []
-  total_weight = 0
+  # Consider all possible subsets of the sublists.
+  for i in range(1 << len(sublists)):
+    subset = []
+    total_weight = 0
+    total_value = 0
 
-  # Add sublists to the final solution until the capacity is exceeded.
-  for sublist in sublists:
-    if total_weight + sublist[1] <= capacity:
-      final_solution.append(sublist)
-      total_weight += sublist[1]
-    else:
-      break
+    for j in range(len(sublists)):
+      if (i >> j) & 1:
+        subset.append(sublists[j])
+        total_weight += sublists[j][1]
+        total_value += sublists[j][0]
 
-  # Return the final solution.
-  return final_solution
+    # If the subset has a weight less than or equal to the capacity of the knapsack and a value greater than the current maximum value, update the best subset and the maximum value.
+    if total_weight <= capacity and total_value > max_value:
+      best_subset = subset
+      max_value = total_value
+
+  # Return the best subset.
+  return best_subset
 
 
 # Solve the knapsack problem.
-# sublists =  [[3,2],[4,3],[5,3],[6,7]]
-# capacity = 10
-# best_subset = knapsack_best_subset(sublists, capacity)
-
-# # Print the maximum sum of the second values and the best subset.
-# print(sum([sublist[1] for sublist in best_subset]))
-# print(best_subset)
-
-with open('input.txt', "r") as f:
-  test_case_count = 0
-  for i in range(len('input.txt')):
-    if f.readline() == '\n':
-      var1 = int(f.readline())
-      sublists = eval(f.readline())
-      capacity = int(f.readline())
-
-      print(f'This size of input array {var1}')
-      print(f'Stocks_and_Values {sublists}')
-      print(f'this is the amount {capacity}')
-
-
-      #call functions here and write to output.txt (still trying to figure it out)
-      best_subset = knapsack_best_subset(sublists, capacity)
+sublists = [[1,2],[4,3],[3,6],[6,7]]
+capacity = 12
+best_subset = knapsack_best_subset_exhaustive(sublists, capacity)
 
 # Print the maximum sum of the second values and the best subset.
-      print(sum([sublist[1] for sublist in best_subset]))
-      print(best_subset)
-      print(str(var1) + '\n')
+print(sum([sublist[1] for sublist in best_subset]))
+print(best_subset)
+
+
+# with open('input.txt', "r") as f:
+#   test_case_count = 0
+#   for i in range(len('input.txt')):
+#     if f.readline() == '\n':
+#       var1 = int(f.readline())
+#       sublists = eval(f.readline())
+#       capacity = int(f.readline())
+
+#       print(f'This size of input array {var1}')
+#       print(f'Stocks_and_Values {sublists}')
+#       print(f'this is the amount {capacity}')
+
+
+#       #call functions here and write to output.txt (still trying to figure it out)
+#       best_subset = knapsack_best_subset(sublists, capacity)
+
+# # Print the maximum sum of the second values and the best subset.
+#       print(sum([sublist[1] for sublist in best_subset]))
+#       print(best_subset)
+#       print(str(var1) + '\n')
       
 
