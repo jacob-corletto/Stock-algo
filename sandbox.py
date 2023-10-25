@@ -1,7 +1,5 @@
 def knapsack_best_subset(sublists, capacity):
-  # Sort the sublists in decreasing order of their second values.
   
-
   # Initialize the final solution.
   final_solution = []
   total_weight = 0
