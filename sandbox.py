@@ -1,9 +1,12 @@
 def knapsack_best_subset(sublists, capacity):
   
+  # Sort the sublists in decreasing order of their second values.
+  sublists.sort(key=lambda sublist: sublist[1], reverse=True)
+  print('first sort', sublists)
   # Initialize the final solution.
   final_solution = []
   total_weight = 0
-
+  
   # Add sublists to the final solution until the capacity is exceeded.
   for sublist in sublists:
     if total_weight + sublist[1] <= capacity:
