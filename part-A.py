@@ -1,13 +1,10 @@
+#importing itertools for generating all possible combinations of sublists
 import itertools
 
-total_sublists = 4
-list = [[1,2],[4,3],[3,6],[6,7], [4,7]]
-capacity = 10
-
 # Generate all possible combinations of sublists
-def exhuastive_method(total_sublists, list, capacity):
-    max_sum = 0
-    max_combination = []
+def generate_combinations(total_sublists, list, capacity):
+    best_sum = 0
+    best_combination = []
     for r in range(1, total_sublists + 1):
         combinations = itertools.combinations(list, r)
         
@@ -17,16 +14,16 @@ def exhuastive_method(total_sublists, list, capacity):
             current_capacity = sum(sublist[1] for sublist in combination)
             
             # Check if current_sum exceeds max_sum and satisfies capacity constraint
-            if current_sum > max_sum and current_capacity <= capacity:
-                max_sum = current_sum
-                max_combination = combination
+            if current_sum > best_sum and current_capacity <= capacity:
+                best_sum = current_sum
+                best_combination = combination
 
         # Check if the sum of the first values exceeds the capacity
-        if sum(sublist[1] for sublist in max_combination) > capacity:
-            max_sum = 0
-            max_combination = []
+        if sum(sublist[1] for sublist in best_combination) > capacity:
+            best_sum = 0
+            best_combination = []
 
-    return max_sum, max_combination
+    return best_sum, best_combination
     
 with open('input.txt', "r") as f:
     test_case_count = 1
@@ -40,7 +37,7 @@ with open('input.txt', "r") as f:
             capacity = int(lines[i + 3])
 
             with open("exhaustive_output.txt", "a") as output_file:
-                max_sum, max_combination = exhuastive_method(total_sublists, my_list, capacity)
+                max_sum, max_combination = generate_combinations(total_sublists, my_list, capacity)
                 output_file.write("Case #" + str(test_case_count) + '\n')
                 output_file.write(str(max_sum) + '\n')
                 output_file.write(str(max_combination) + '\n\n')
