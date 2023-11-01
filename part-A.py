@@ -44,7 +44,7 @@ with open('input.txt', "r") as f:
                 output_file.write("Case #" + str(test_case_count) + '\n')
                 output_file.write("Value: " + str(max_sum) + '\n')
                 output_file.write("Best combinations: " + str(max_combination) + '\n')
-                output_file.write("Total Stocks: " + str(total_stocks) + '\n')
+                output_file.write("Total Stocks: " + str(total_stocks) + '\n\n')
                 output_file.write("--------------------------------------------------\n\n")
 
             total_sublists = 0
