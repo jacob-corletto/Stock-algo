@@ -37,10 +37,15 @@ with open('input.txt', "r") as f:
             capacity = int(lines[i + 3])
 
             with open("exhaustive_output.txt", "a") as output_file:
+                output_file.truncate()
                 max_sum, max_combination = generate_combinations(total_sublists, my_list, capacity)
+                #sum of indexes of the sublists
+                total_stocks = sum(sublist[0] for sublist in max_combination)
                 output_file.write("Case #" + str(test_case_count) + '\n')
-                output_file.write(str(max_sum) + '\n')
-                output_file.write(str(max_combination) + '\n\n')
+                output_file.write("Value: " + str(max_sum) + '\n')
+                output_file.write("Best combinations: " + str(max_combination) + '\n')
+                output_file.write("Total Stocks: " + str(total_stocks) + '\n')
+                output_file.write("--------------------------------------------------\n\n")
 
             total_sublists = 0
             my_list = []
