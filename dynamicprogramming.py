@@ -6,7 +6,7 @@ def knapSack(items, w, n):
         return knapSack(items, w, n-1)
 # Driver program to test above function
     else:
-        return max(items[n-1][1] + knapSack(items, w-items[n-1][1], n-1), knapSack(items, w, n-1))
+        return max(items[n-1][0] + knapSack(items, w-items[n-1][1], n-1), knapSack(items, w, n-1))
 
 
 with open('input.txt', "r") as f:
@@ -25,7 +25,7 @@ with open('input.txt', "r") as f:
                 max_sum = knapSack(my_list, capacity, total_sublists)
                 #sum of indexes of the sublists
                 output_file.write("Case #" + str(test_case_count) + '\n')
-                output_file.write("Value: " + str(max_sum) + '\n')
+                output_file.write("Total Stocks: " + str(max_sum) + '\n')
                 output_file.write("--------------------------------------------------\n\n")
 
             total_sublists = 0
