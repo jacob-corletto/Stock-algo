@@ -107,7 +107,7 @@ Total Stocks: max_sum
 Where:
 
 - `test_case_count` is the index of the test case
-- `max_sum `is the maximum total value of stocks found
+- `max_sum`is the maximum total value of stocks found
 
 ### Usage
 
