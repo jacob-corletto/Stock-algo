@@ -1,12 +1,11 @@
 #knapsack in dynamic programming
-def knapSack(items, w, n):
-    if n == 0 or w == 0:
+def dp_max_stock(my_list, capacity, total_sublists):
+    if total_sublists == 0 or capacity == 0:
         return 0
-    if (items[n-1][1] > w):
-        return knapSack(items, w, n-1)
-# Driver program to test above function
+    if (my_list[total_sublists-1][1] > capacity):
+        return dp_max_stock(my_list, capacity, total_sublists-1)
     else:
-        return max(items[n-1][0] + knapSack(items, w-items[n-1][1], n-1), knapSack(items, w, n-1))
+        return max(my_list[total_sublists-1][0] + dp_max_stock(my_list, capacity-my_list[total_sublists-1][1], total_sublists-1), dp_max_stock(my_list, capacity, total_sublists-1))
 
 
 with open('input.txt', "r") as f:
@@ -22,7 +21,7 @@ with open('input.txt', "r") as f:
 
             with open("dp_output.txt", "a") as output_file:
                 output_file.truncate()
-                max_sum = knapSack(my_list, capacity, total_sublists)
+                max_sum = dp_max_stock(my_list, capacity, total_sublists)
                 #sum of indexes of the sublists
                 output_file.write("Case #" + str(test_case_count) + '\n')
                 output_file.write("Total Stocks: " + str(max_sum) + '\n')
