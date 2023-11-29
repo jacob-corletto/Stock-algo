@@ -1,12 +1,13 @@
 # CPSC 335 Project 2
 ## Collaborators
+- Jacob Corletto jacob.corletto@gmail.com
+
 - Raxel Ortiz raxelortiz7@csu.fullerton.edu
 
-- Jacob Corletto jacob.corletto@gmail.com
+- Helen Truong 
 
 - Esteban Zapata eazapata@csu.fullerton.edu
 
-- Helen Truong 
 
 
 # Part-A
