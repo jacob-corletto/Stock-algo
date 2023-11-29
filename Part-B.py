@@ -1,4 +1,4 @@
-#knapsack in dynamic programming
+#Stock Maximization in dynamic programming
 def dp_max_stock(my_list, capacity, total_sublists):
     if total_sublists == 0 or capacity == 0:
         return 0
