@@ -4,7 +4,7 @@
 
 - Raxel Ortiz raxelortiz7@csu.fullerton.edu
 
-- Helen Truong 
+- Helen Truong helentruo@gmail.com
 
 - Esteban Zapata eazapata@csu.fullerton.edu
 
